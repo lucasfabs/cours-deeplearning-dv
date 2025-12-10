@@ -1,8 +1,6 @@
 const canvas = document.getElementById('chiffreCanvas');
 const ctx = canvas.getContext('2d');
 const clearButton = document.querySelector('.clearButton');
-const modelInput = document.getElementById('model');
-const modelLabel = document.getElementById('modelLabel');
 const modelStatus = document.getElementById('modelStatus');
 const predictButton = document.getElementById('predictButton');
 const predictionResult = document.getElementById('predictionResult');
@@ -70,22 +68,31 @@ function clearCanvas() {
 
 let session = null; // Variable pour stocker la session ONNX
 
-// Fonction pour charger le modèle ONNX
-async function loadModel(file) {
+// Fonction pour charger le modèle ONNX automatiquement
+async function loadModel() {
     try {
         // Afficher le statut de chargement
-        modelStatus.textContent = 'Chargement du modèle...';
-        modelStatus.className = 'model-status';
+        if (modelStatus) {
+            modelStatus.textContent = 'Chargement du modèle...';
+            modelStatus.className = 'model-status';
+        }
 
-        // Lire le fichier en tant qu'ArrayBuffer
-        const arrayBuffer = await file.arrayBuffer();
+        // Charger le modèle depuis le dossier
+        const response = await fetch('model.onnx');
+        if (!response.ok) {
+            throw new Error('Impossible de charger le modèle. Assurez-vous d\'utiliser un serveur web local (ex: npm start) et que le fichier "model.onnx" existe dans le dossier.');
+        }
+        
+        const arrayBuffer = await response.arrayBuffer();
         
         // Créer une session ONNX Runtime
         session = await ort.InferenceSession.create(arrayBuffer);
         
         // Afficher le succès
-        modelStatus.textContent = 'Modèle chargé avec succès ✓';
-        modelStatus.className = 'model-status success';
+        if (modelStatus) {
+            modelStatus.textContent = 'Modèle chargé avec succès ✓';
+            modelStatus.className = 'model-status success';
+        }
         
         // Activer le bouton de prédiction
         if (predictButton) {
@@ -95,8 +102,14 @@ async function loadModel(file) {
         console.log('Modèle chargé:', session);
     } catch (error) {
         console.error('Erreur lors du chargement du modèle:', error);
-        modelStatus.textContent = 'Erreur: ' + error.message;
-        modelStatus.className = 'model-status error';
+        if (modelStatus) {
+            let errorMessage = error.message;
+            if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+                errorMessage = 'Erreur: Vous devez utiliser un serveur web local. Lancez "npm start" dans le terminal.';
+            }
+            modelStatus.textContent = errorMessage;
+            modelStatus.className = 'model-status error';
+        }
         session = null;
         
         // Désactiver le bouton de prédiction
@@ -230,15 +243,8 @@ if (clearButton) {
     clearButton.addEventListener('click', clearCanvas);
 }
 
-// Chargement du modèle : Au changement de fichier
-if (modelInput) {
-    modelInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            loadModel(file);
-        }
-    });
-}
+// Chargement automatique du modèle au chargement de la page
+loadModel();
 
 // Prédiction : Au clic sur le bouton Prédire
 if (predictButton) {
