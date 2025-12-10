@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconnaissance de chiffres</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <h1 class="title">Reconnaissance de chiffres</h1>
+        <p class="description">Dessiner un chiffre de 0 à 9</p>
+        <label for="model" id="modelLabel">
+            <span>Choisir un model</span>
+            <input type="file" id="model" accept=".onnx" />
+        </label>
+        <div id="modelStatus" class="model-status"></div>
+        <div class="canvas-container">
+            <canvas id="chiffreCanvas" width="400" height="400">
+
+            </canvas>
+        </div>
+        <div class="buttons-container">
+            <button class="clearButton">Effacer</button>
+            <button id="predictButton">Prédire</button>
+        </div>
+        <div id="predictionResult" class="prediction-result"></div>
+    </main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort.min.js"></script>
+<script src="script.js"></script>
+
+</html>
