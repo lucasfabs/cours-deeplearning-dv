@@ -93,11 +93,7 @@ async function loadModel() {
             modelStatus.textContent = 'Modèle chargé avec succès ✓';
             modelStatus.className = 'model-status success';
         }
-        
-        // Activer le bouton de prédiction
-        if (predictButton) {
-            predictButton.disabled = false;
-        }
+    
         
         console.log('Modèle chargé:', session);
     } catch (error) {
