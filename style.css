@@ -146,12 +146,12 @@ button:disabled:hover {
 }
 
 .prediction-result.success {
-    background-color: rgb(250, 255, 250);
+    background-color: white;
     border: 2px solid rgba(76, 175, 80, 0.3);
 }
 
 .prediction-result.error {
-    background-color: rgb(255, 218, 216);
+    background-color: white;
     border: 2px solid rgba(244, 67, 54, 0.3);
 }
 
