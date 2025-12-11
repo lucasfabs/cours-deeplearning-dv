@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-    --primary-color: #191919;
-    --secondary-color: #202020;
-    --tertiary-color: #2C2C2C;
+    --primary-color: #FFFFFF;
+    --secondary-color: #F9F8F7;
+    --tertiary-color: #EEEEEC;
 
-    --text-primary: #F0EFED;
-    --text-secondary: #9B9B9B;
+    --text-primary: #2C2C2B;
+    --text-secondary: #5F5E5B;
 
     --canvas-color-1: #ffffff;
-    --canvas-color-2: #000000;
+    --canvas-color-2: #2C2C2B;
 }
 
 * {
@@ -26,6 +26,8 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    height: auto;
+    padding: 48px 0;
 }
 
 main {
