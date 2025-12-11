@@ -140,7 +140,7 @@ button:disabled:hover {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 0;
+    top: 16px;
 }
 
 .prediction-result.success {
