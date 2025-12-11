@@ -146,7 +146,7 @@ button:disabled:hover {
 }
 
 .prediction-result.success {
-    background-color: rgb(221, 255, 222);
+    background-color: rgb(250, 255, 250);
     border: 2px solid rgba(76, 175, 80, 0.3);
 }
 
