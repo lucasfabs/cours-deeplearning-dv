@@ -141,6 +141,7 @@ button:disabled:hover {
     left: 50%;
     transform: translateX(-50%);
     top: 16px;
+    background-color: var(--secondary-color);
 }
 
 .prediction-result.success {
