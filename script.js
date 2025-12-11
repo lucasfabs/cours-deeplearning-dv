@@ -14,7 +14,7 @@ ctx.fillStyle = '#ffffff';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 ctx.strokeStyle = '#000'; // Couleur du trait : Noir
-ctx.lineWidth = 12;          // Épaisseur du trait
+ctx.lineWidth = 20;          // Épaisseur du trait
 ctx.lineCap = 'round';       // Extrémités des lignes arrondies
 ctx.lineJoin = 'round';      // Jointures des lignes arrondies
 
