@@ -164,12 +164,6 @@ async function predict() {
         }
     }
     
-    if (!hasDrawing) {
-        predictionResult.innerHTML = '<div class="prediction-error">Veuillez dessiner un chiffre</div>';
-        predictionResult.className = 'prediction-result error';
-        return;
-    }
-    
     try {
         // Afficher le chargement
         predictionResult.innerHTML = '<div class="prediction-label">Prédiction en cours...</div>';

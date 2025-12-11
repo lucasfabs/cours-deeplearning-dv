@@ -129,7 +129,6 @@ button:disabled:hover {
 
 /* résultat de prédiction */
 .prediction-result {
-    margin-top: 24px;
     padding: 16px 24px;
     border-radius: 8px;
     min-height: 60px;
@@ -137,6 +136,10 @@ button:disabled:hover {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
 }
 
 .prediction-result.success {
